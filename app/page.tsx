@@ -4,7 +4,8 @@ import {redirect} from "next/navigation";
 import {RedirectType} from "next/dist/client/components/redirect";
 import {Navbar} from "@/app/components/Navbar";
 import {Billboard} from "@/app/components/Billboard";
-import {MovieList} from "@/app/components/MovieList";
+import {TrendMovies} from "@/app/components/TrendMovies";
+import {FavoriteMovies} from "@/app/components/FavoriteMovies";
 
 const Home = async () => {
   const session = await getServerSession(authOptions)
@@ -17,7 +18,8 @@ const Home = async () => {
       <Navbar />
       <Billboard />
       <div className="pb-40">
-        <MovieList />
+        <TrendMovies />
+        <FavoriteMovies />
       </div>
     </>
   )
