@@ -6,6 +6,7 @@ import {Navbar} from "@/app/components/Navbar";
 import {Billboard} from "@/app/components/Billboard";
 import {TrendMovies} from "@/app/components/TrendMovies";
 import {FavoriteMovies} from "@/app/components/FavoriteMovies";
+import {MovieInfoModal} from "@/app/components/MovieInfoModal";
 
 const Home = async () => {
   const session = await getServerSession(authOptions)
@@ -15,6 +16,7 @@ const Home = async () => {
 
   return (
     <>
+      <MovieInfoModal />
       <Navbar />
       <Billboard />
       <div className="pb-40">
