@@ -1,7 +1,10 @@
+'use client'
+
 import {FC} from "react";
-import {BsFillPlayFill} from "react-icons/bs";
+import {BsChevronDown, BsFillPlayFill} from "react-icons/bs";
 import {FavoriteButton} from "@/app/components/FavoriteButton";
 import {useRouter} from "next/navigation";
+import useInfoModalStore from "@/hooks/useInfoModalStore";
 
 type MovieCardProps = {
   movie: Record<string, any>,
@@ -9,6 +12,7 @@ type MovieCardProps = {
 
 export const MovieCard: FC<MovieCardProps> = ({movie}) => {
   const router = useRouter()
+  const {openModal} = useInfoModalStore()
 
   return (
     <div className="group col-span bg-zinc-900 relative h-[12vw]">
@@ -68,6 +72,11 @@ export const MovieCard: FC<MovieCardProps> = ({movie}) => {
               <BsFillPlayFill className="w-4 lg:w-8"/>
             </div>
             <FavoriteButton movieId={movie.id} />
+            <div
+              onClick={() => openModal(movie.id)}
+              className="group/item border-2 border-white w-6 h-6 lg:w-10 lg:h-10 rounded-full cursor-pointer ml-auto flex flex-row items-center justify-center hover:border-neutral-300">
+              <BsChevronDown className="text-white w-4 lg:w-8 group-hover/item:text-neutral-300"/>
+            </div>
           </div>
           <p className="text-green-400 font-semibold mt-4">
             New <span className="text-white">2023</span>
